@@ -67,7 +67,7 @@ const Game = () => {
 
   return (
     <div className="game-board">
-        <h2>{person1} : {person1Win}</h2>
+        <h2 className="game-element">{person1} : {person1Win}</h2>
       <div className="middle">
         <div className="Name">
           <div className="NameInput">
@@ -104,7 +104,7 @@ const Game = () => {
           </div>
         </div>
       </div>
-      <h2>{person2} : {person2Win}</h2>
+      <h2 className="game-element">{person2} : {person2Win}</h2>
     </div>
   );
 };
