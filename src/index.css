@@ -1,0 +1,196 @@
+* {
+    margin: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.App {
+    width: 100%;
+    height: 100vh;
+}
+
+.title {
+    padding: 20px;
+    color : 
+    linear-gradient(to right, #553c9a 45%, #ee4b2b);
+}
+
+/* Here are just some visual styles. 🖌 */
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: xx-large;
+  text-transform: uppercase;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 2px solid black;
+  float: left;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 100px;
+  padding: 0;
+  text-align: center;
+  width: 100px;
+}
+
+.square:hover {
+    background-color: grey;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.InnerValX {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+  background: #60b6e2;
+  animation: 1s moveit linear;
+}
+
+.InnerValY {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+  background: #06BCB5;
+  animation: 1s moveit linear;
+}
+
+@keyframes moveit {
+    0% { transform: translateY(0) scale3d(0.96,0.96,1); }
+    29% { transform: translateY(1px) scale3d(1.1,1.1,1); }
+    66% { transform: translateY(1.5px) scale3d(0.98,0.98,1); }
+    100% { transform: translateY(2px) scale3d(1.05,1.05,1); }
+  }
+  
+  @keyframes moveitback {
+    0% { transform: translateY(60px); }
+    100% { transform: translateY(0) scale3d(0.96,0.96,1); }
+  }
+  
+  @keyframes scale {
+    0% { transform: scale3d(0.96,0.96,1); }
+    100% { transform: scale3d(1,1,1); }
+  }
+
+.board-area {
+    border-radius: 11px;
+    background: #c1bebe;
+    box-shadow:  20px 20px 26px #9a9898,
+                 -20px -20px 26px #e8e4e4;
+}
+
+.game-board {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.EndButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 40px;
+}
+
+.btn {
+    padding: 5px;
+    background-color: #e4a9a8;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow:  20px 20px 26px #9a9898,
+                 -20px -20px 26px #e8e4e4;
+}
+
+.btn:active {
+    transform: scale(1.2);
+}
+
+.NameInput {
+    margin: 15px;
+}
+
+.status {
+    margin-bottom: 40px;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header h1 {
+    font-size: 70px;
+    font-weight: 800;
+    -webkit-background-clip: text;
+    background-clip: text;   
+  }
+
+.animate-character
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #231557 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
