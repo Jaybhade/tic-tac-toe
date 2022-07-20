@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import Board from "./Board";
 import calculateWinner from "./CalculateWinner";
+import Modal from "./Modal";
 import { ThemeContext } from "./ThemeContext";
 
 const Game = () => {
-  const { person1Win, person2Win } = useContext<any>(ThemeContext);
+  const { person1Win, person2Win, showModal } = useContext<any>(ThemeContext);
 
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [stepNumber, setStepNumber] = useState(0);
@@ -26,13 +27,6 @@ const Game = () => {
     setStepNumber(history.length);
     setXIsNext(!xIsNext);
     setCount(count + 1);
-
-    // const winner = calculateWinner(history[stepNumber].squares);
-    // if (winner === "X") {
-    //     setPerson1Wins(person1Wins+1);
-    // } else if (winner === "O"){
-    //     setPerson2Wins(person2Wins+1);
-    // }
   };
 
   const jumpTo = (step: number) => {
@@ -52,14 +46,11 @@ const Game = () => {
   if (count === 9 && !calculateWinner(history[stepNumber].squares)) {
     status = "Result is DRAW.";
   } else if (calculateWinner(history[stepNumber].squares)) {
-    // status = "Winner: " + calculateWinner(history[stepNumber].squares);
     const winner = calculateWinner(history[stepNumber].squares);
     if (winner === "X") {
       status = "Winner : " + person1;
-      // setPerson1Wins(person1Wins+1);
     } else {
       status = "Winner : " + person2;
-      // setPerson2Wins(person2Wins+1);
     }
   } else {
     status = "Current player: " + (xIsNext ? person1 : person2);
@@ -67,7 +58,10 @@ const Game = () => {
 
   return (
     <div className="game-board">
-        <h2 className="game-element">{person1} : {person1Win}</h2>
+      <Modal empty={empty} show={showModal} person={calculateWinner(history[stepNumber].squares) === "X" ? person1 : person2}/>
+      <h2 className="game-element">
+        {person1} : {person1Win} {person1Win===person2Win ? null : (person1Win > person2Win ? <>😎</> : <>😢</>)}
+      </h2>
       <div className="middle">
         <div className="Name">
           <div className="NameInput">
@@ -104,7 +98,9 @@ const Game = () => {
           </div>
         </div>
       </div>
-      <h2 className="game-element">{person2} : {person2Win}</h2>
+      <h2 className="game-element">
+        {person2} : {person2Win} {person1Win === person2Win ? null : (person2Win > person1Win ? <>😎</> : <>😢</>)}
+      </h2>
     </div>
   );
 };

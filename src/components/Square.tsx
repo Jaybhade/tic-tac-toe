@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import calculateWinner from "./CalculateWinner";
+import Modal from "./Modal";
 import { ThemeContext } from "./ThemeContext";
 
 const Square = (props: AppProps) => {
-  const { toggleTheme, addPerson1Win, addPerson2Win } =
+  const { toggleTheme, addPerson1Win, addPerson2Win, toggleModal, showModal } =
     useContext<any>(ThemeContext);
   const winner = calculateWinner(props.history[props.stepNumber].squares);
   const handleClick = () => {
@@ -12,27 +13,32 @@ const Square = (props: AppProps) => {
   };
 
   useEffect(() => {
-    if (winner === "X") {
-      addPerson1Win();
-    } else if (winner === "O") {
-      addPerson2Win();
+    if (winner) {
+      toggleModal();
+      if (winner === "X") {
+        addPerson1Win();
+      } else if (winner === "O") {
+        addPerson2Win();
+      }
     }
   }, [winner]);
 
   return (
-    <button className="square" onClick={handleClick}>
-      <div
-        className={
-          props.value === "X"
-            ? "InnerValX"
-            : props.value === "O"
-            ? "InnerValY"
-            : "InnerVal"
-        }
-      >
-        <div>{props.value}</div>
-      </div>
-    </button>
+    <>
+        <button className="square" onClick={handleClick}>
+          <div
+            className={
+              props.value === "X"
+                ? "InnerValX"
+                : props.value === "O"
+                ? "InnerValY"
+                : "InnerVal"
+            }
+          >
+            <div>{props.value}</div>
+          </div>
+        </button>
+    </>
   );
 };
 
