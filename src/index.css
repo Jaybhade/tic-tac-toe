@@ -121,10 +121,19 @@
 
 .game-element {
   width: 10%;
+  display: flex;
+}
+
+.game-element div {
+  margin: 2px;
 }
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  .animate-character {
+    font-size: 50px;
+  }
+
   .game-board {
     width: 100%;
     display: flex;
@@ -134,9 +143,8 @@
   }
 
   .game-element {
-    align-self: center;
+    display: flex;
     order: 1;
-    width: 100%;
   }
 }
 

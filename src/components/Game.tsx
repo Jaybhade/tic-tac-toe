@@ -58,9 +58,26 @@ const Game = () => {
 
   return (
     <div className="game-board">
-      <Modal empty={empty} show={showModal} person={calculateWinner(history[stepNumber].squares) === "X" ? person1 : person2}/>
+      <Modal
+        empty={empty}
+        show={showModal}
+        person={
+          calculateWinner(history[stepNumber].squares) === "X"
+            ? person1
+            : person2
+        }
+      />
       <h2 className="game-element">
-        {person1} : {person1Win} {person1Win===person2Win ? null : (person1Win > person2Win ? <>😎</> : <>😢</>)}
+        <div>{person1}</div>
+        <div> : </div>
+        <div>{person1Win} </div>
+        <div>
+          {person1Win === person2Win ? null : person1Win > person2Win ? (
+            <>😎</>
+          ) : (
+            <>😢</>
+          )}
+        </div>
       </h2>
       <div className="middle">
         <div className="Name">
@@ -99,7 +116,15 @@ const Game = () => {
         </div>
       </div>
       <h2 className="game-element">
-        {person2} : {person2Win} {person1Win === person2Win ? null : (person2Win > person1Win ? <>😎</> : <>😢</>)}
+        <div>{person2}</div> <div>:</div> <div>{person2Win}</div>
+        <div>
+          {" "}
+          {person1Win === person2Win ? null : person2Win > person1Win ? (
+            <>😎</>
+          ) : (
+            <>😢</>
+          )}
+        </div>
       </h2>
     </div>
   );
